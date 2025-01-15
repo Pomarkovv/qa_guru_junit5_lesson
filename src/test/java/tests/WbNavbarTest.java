@@ -50,7 +50,6 @@ public class WbNavbarTest extends TestBase{
     }
 
     @Tag("SMOKE")
-
     @MethodSource("navbarDroppedMenuMethodSourceTest")
     @ParameterizedTest
     public void navbarDroppedMenuMethodSourceTest(String categoryName, List<String> expectedTypeOfGoodsList) {
