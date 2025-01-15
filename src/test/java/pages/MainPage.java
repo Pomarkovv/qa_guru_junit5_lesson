@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class MainPage {
 
@@ -11,5 +12,6 @@ public class MainPage {
 
     public void openNavbar() {
         navbarButton.shouldBe(visible).click();
+        sleep(2000);
     }
 }

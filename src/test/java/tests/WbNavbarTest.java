@@ -2,6 +2,7 @@ package tests;
 
 import components.BurgerMenuComponent;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -23,9 +24,10 @@ public class WbNavbarTest extends TestBase{
     @BeforeEach
     public void setUp() {
         open("https://www.wildberries.ru/");
-        sleep(2000);
+        sleep(1000);
     }
 
+    @Tag("SMOKE")
     @CsvFileSource(resources = "/navbar-test-data.csv")
     @ParameterizedTest
     public void navbarDroppedMenuCsvFileTest(String categoryName, String expectedTypeOfGoods) {
@@ -34,6 +36,7 @@ public class WbNavbarTest extends TestBase{
         burgerMenu.checkDroppedCategory(expectedTypeOfGoods);
     }
 
+    @Tag("SMOKE")
     @CsvSource({
             "Мужчинам, Брюки",
             "Обувь, Детская",
@@ -46,11 +49,12 @@ public class WbNavbarTest extends TestBase{
         burgerMenu.checkDroppedCategory(expectedTypeOfGoods);
     }
 
+    @Tag("SMOKE")
+
     @MethodSource("navbarDroppedMenuMethodSourceTest")
     @ParameterizedTest
     public void navbarDroppedMenuMethodSourceTest(String categoryName, List<String> expectedTypeOfGoodsList) {
         mainPage.openNavbar();
-        sleep(3000);
         burgerMenu.openCategoryList(categoryName);
         burgerMenu.checkDroppedCategories(expectedTypeOfGoodsList);
     }
